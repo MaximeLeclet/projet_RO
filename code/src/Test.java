@@ -1,21 +1,13 @@
-/**
- *
- */
 import java.io.*;
 
-
-
-/**
- * @author verel
- *
- */
 public class Test {
 
     /**
      * @param args
      */
     public static void main(String[] args) {
-	Automata automate = new Automata(20);
+
+	Automata automate = new Automata(35);
 
 	// path to change
 	String solFileName = "solution_19a";
@@ -25,7 +17,7 @@ public class Test {
 	int [] rules = initRulesFromFile(bestName);
 
 	// Nombre maximale de fusiliers (taille maximale du réseau)
-	int sizeMax = 20;
+	int sizeMax = 35;
 
 	int nFire;
 
@@ -38,10 +30,10 @@ public class Test {
 
 	    // affichage du nombre de fusiliers ayant tiré
 	    System.out.println("longueur " + i + " : " + nFire);
-
+	    
 	    // affiche la dynamique dans un fichier au format svg
 	    automate.exportSVG(i, 2 * i - 2, path + "svg/" + solFileName + "_" + i + ".svg");
-	}
+	} 
 
 	String outName = path + "out.dat";
 
@@ -58,14 +50,21 @@ public class Test {
 
 		printToFile(fit, rules, ecrivain);
 	    }
-
+			
 	    ecrivain.close();
 	}
 	catch (Exception e){
 	    System.out.println(e.toString());
 	}
-
+		
 	System.out.println("The End.");
+
+	HillClimb hc = new HillClimb();
+	Solution s = new Solution();
+
+	s = hc.firstImprovement(100000, automate);
+	System.out.println(s.toString());
+
     }
 
     public static void printToFile(int fitness, int [] rules, PrintWriter ecrivain) {
@@ -90,12 +89,12 @@ public class Test {
 
 	    int i = 0;
 	    while(entree.nextToken() == StreamTokenizer.TT_NUMBER)
-		{
+		{		
 		    rules[i] = (int) entree.nval;
 		    i++;
-		}
+		} 
 	    fichier.close();
-	}
+	}		
 	catch (Exception e){
 	    System.out.println(e.toString());
 	}

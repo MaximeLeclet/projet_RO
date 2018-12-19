@@ -129,6 +129,7 @@ public class Automata {
 	 *
 	 *********************************************/
 	public int f(int [] regles, int n) {
+
 		int nbFireTot = evol(regles, 2);
 
 		int k = 2;
@@ -144,13 +145,6 @@ public class Automata {
 			return k - 1;
 	}
 
-
-	/*public int RandomSearch(){
-
-
-
-	}
-	*/
 
 
     /*********************************************
