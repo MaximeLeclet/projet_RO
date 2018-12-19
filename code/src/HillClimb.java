@@ -4,22 +4,19 @@ import java.util.concurrent.ThreadLocalRandom;
 public class HillClimb {
 
     private static final int _NBITER = 216;
-    private static final int _NBETATS = 5;
+    private static final int _NBETATS = 500;
     private static final int _SIZEMAX = 20;
 
     public Solution firstImprovement(int maxOpti, Automata automata) {
+
+        System.out.println("");
+        System.out.println("Algorithme first improvement : ");
 
         Initialization initialisation = new Initialization();
         int[] rules = new int[_NBITER];
         initialisation.init(rules);
 
-        for (int j = 0; j < _NBITER; j++) {
-            System.out.println("rules" + j + rules[j]);
-        }
-
         int fitness = automata.f(rules, _SIZEMAX);
-
-        System.out.println("Fitness : " + fitness);
 
         Solution solution = new Solution(rules);
 

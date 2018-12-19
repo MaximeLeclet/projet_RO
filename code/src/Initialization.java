@@ -86,6 +86,7 @@ public class Initialization {
 
 	}
 
+
     /*
      * Ecrit la regle 
      *
@@ -97,11 +98,6 @@ public class Initialization {
     public void setRule(int [] rules, int g, int c, int d, int r) {
 	rules[g * 36 + c * 6 + d] = r;
     }
-    /*
-    public void isLegalRule(int index) {
-    	for (int i = 0; i < tabIndice; ) {
-
-		}
-	}
-	*/
+   
+    
 }
